@@ -35,7 +35,7 @@ TODO:
 ## Installation
 
 ```bash
-pip install jupyterlab_irods
+pip install git+https://github.com/lstillwe/IJab.git
 jupyter serverextension enable --py jupyterlab_irods
 jupyter labextension install ijab
 ```
