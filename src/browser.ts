@@ -61,7 +61,7 @@ export
         var irods_toolbar = document.createElement('div'); 
 
         // Create an editable name for the user/org name.
-        this.host = new MaterialField('Host / IP', localStorage.getItem("irhost") === null ? 'data.cyverse.com' : localStorage.getItem("irhost"));
+        this.host = new MaterialField('Host / IP', localStorage.getItem("irhost") === null ? '' : localStorage.getItem("irhost"));
         irods_toolbar.appendChild(this.host.node);
 
 
@@ -73,7 +73,7 @@ export
         irods_toolbar.appendChild(this.user.node);
  
 
-        this.zone = new MaterialField('Zone', localStorage.getItem("irzone") === null ? 'iplant' : localStorage.getItem("irzone"));
+        this.zone = new MaterialField('Zone', localStorage.getItem("irzone") === null ? '' : localStorage.getItem("irzone"));
         irods_toolbar.appendChild(this.zone.node);
 
 
@@ -124,8 +124,14 @@ export
     }
 
     cdHome(): any {
-        console.log('/iplant/home/' + String(localStorage.getItem("iruser") === null ? '' : localStorage.getItem("iruser")));
-        this._browser.model.cd('/iplant/home/' + String(localStorage.getItem("iruser") === null ? '' : localStorage.getItem("iruser")));
+        console.log('/' +
+                    String(localStorage.getItem("irzone") === null ? 'tempZone' : localStorage.getItem("irzone")) +
+                    '/home/' +
+                    String(localStorage.getItem("iruser") === null ? 'rods' : localStorage.getItem("iruser")));
+        this._browser.model.cd('/' +
+                               String(localStorage.getItem("irzone") === null ? 'tempZone' : localStorage.getItem("irzone")) +
+                               '/home/' +
+                               String(localStorage.getItem("iruser") === null ? 'rods' : localStorage.getItem("iruser")));
     }
 
     readonly host: MaterialField;
